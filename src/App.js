@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import Header from "./components/Header/Header";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import AccountsTable from "./components/AccountsTable/AccountsTable";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component{
+state = {
+    accounts : [
+        {id:1,name:"Olivera",lastname:"Micic", phone:"11-111-111",email:"a@gmail.com"}
+    ]
+}
+
+    render(){
+        return(
+            <BrowserRouter>
+            <Header />
+            <Routes>
+                <Route path="/" element={(
+                    <AccountsTable accounts = {this.state.accounts}/>
+                )}/>
+            </Routes>
+            </BrowserRouter>
+            
+        )
+    }
 }
 
 export default App;
