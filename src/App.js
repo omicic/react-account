@@ -3,6 +3,7 @@ import Header from "./components/Header/Header";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import AccountsTable from "./components/AccountsTable/AccountsTable";
 import AddAccount from "./components/AddAccount/AddAccount";
+import EditTable from "./components/EditTable/EditTable";
 
 class App extends Component{
     state = {
@@ -12,11 +13,18 @@ class App extends Component{
     }
 
     addNewAccountToState = (acc) =>{
-   
+  
     this.setState({
         accounts : [...this.state.accounts,acc]
     })
 
+    }
+
+    deleteAccount = (id) =>{
+        const accountsCopy = [...this.state.accounts];
+        const newCopyAccounts = accountsCopy.filter(account=>account.id !== id);
+        //svi osim onoga koga bri[emo]
+        this.setState({accounts:newCopyAccounts});
     }
 
     render(){
@@ -29,6 +37,9 @@ class App extends Component{
                 )}/>
                 <Route path="/add" element={(
                     <AddAccount accounts={this.state.accounts}/>
+                )}/>
+                   <Route path="/edit" element={(
+                    <EditTable accounts={this.state.accounts} deleteAccount={this.deleteAccount}/>
                 )}/>
             </Routes>
             </BrowserRouter>
