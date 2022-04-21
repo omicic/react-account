@@ -1,10 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 
 const Account = ({account,edit,deleteAccount}) =>{
 
     const actionButtons = edit ? (
         <>
-        <td><button className="btn btn-warning">Edit</button></td>
+        <td><Link to={"/edit/"+account.id} key={account.id} className="btn btn-warning">Edit</Link></td>
         <td><button onClick={()=>{deleteAccount(account.id)}} className="btn btn-danger">Delete</button></td>     
         </>
     ) : null;

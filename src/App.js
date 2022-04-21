@@ -4,6 +4,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import AccountsTable from "./components/AccountsTable/AccountsTable";
 import AddAccount from "./components/AddAccount/AddAccount";
 import EditTable from "./components/EditTable/EditTable";
+import EditAccount from "./components/EditAccount/EditAccount";
 
 class App extends Component{
     state = {
@@ -27,6 +28,11 @@ class App extends Component{
         this.setState({accounts:newCopyAccounts});
     }
 
+    editedAccount = (account) =>{
+
+    }
+
+
     render(){
         return(
             <BrowserRouter>
@@ -38,9 +44,20 @@ class App extends Component{
                 <Route path="/add" element={(
                     <AddAccount accounts={this.state.accounts}/>
                 )}/>
-                   <Route path="/edit" element={(
+
+                <Route path="/edit" element={(
                     <EditTable accounts={this.state.accounts} deleteAccount={this.deleteAccount}/>
                 )}/>
+                <Route path="/edit/:id"
+                    element={( <EditAccount accounts={this.state.accounts}/> )}
+               />
+                    
+                    
+                   
+              
+
+
+
             </Routes>
             </BrowserRouter>
             
