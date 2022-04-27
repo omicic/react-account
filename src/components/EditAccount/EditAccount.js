@@ -18,34 +18,31 @@ const EditAccount = ({accounts}) => {
     this.setState({account :accountForEdit});
     } */
 //console.log(accounts)
-   const accountEdit =  accounts.filter(acc => acc.id == id)[0];
+   let accountEdit =  accounts.filter(acc => acc.id == id)[0];
 //console.log(accountEdit)
   
     
 
 function handleClick(e) {
-    //accounts.push(newAccount);
-    var index = accounts.indexOf(e.target.id)
-    if (index !== -1) {
-        accounts.splice(index, 1);
-        //this.setState({people: array});
+    let index;
+  for (let i = 0; i < accounts.length; i++) {
+      if(accounts[i].id==accountEdit.id){
+         index = i;
       }
+    
+  }
+
+    accounts.splice(index, 1);
     accounts.push(accountEdit);
-    navigate('/')
+    navigate('/') 
 }
 
 const changeHandler = (event) =>{
-    console.log(event.target.value)
     let id = event.target.id;
-
- 
-
-    //console.log(id)//koje polje
-
     let newAccountCopy = {...accountEdit};
-
     newAccountCopy[id]=event.target.value;
     accountEdit = newAccountCopy
+   
 
 } 
         return (
