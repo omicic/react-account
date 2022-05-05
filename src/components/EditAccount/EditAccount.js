@@ -5,7 +5,8 @@ function EditAccount(props) {
 
     const {id} = useParams()
     let navigate = useNavigate();
-    const [accountEdit,setAccount] = useState(props.accounts.filter(acc => acc.id == id)[0])
+    console.log(typeof props.accounts[0].id);
+    const [accountEdit,setAccount] = useState(props.accounts.filter(acc => acc.id === parseInt(id))[0])
     
 
    //let accountEdit =  accounts.filter(acc => acc.id == id)[0];
