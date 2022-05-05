@@ -34,11 +34,11 @@ function App () {
         //this.setState({accounts:newCopyAccounts});
     }
 
-   const editedAccount = (acc) =>{
+/*    const editedAccount = (acc) =>{
             let accountPosition = accounts.map(account=>account.id).indexOf(acc.id);
             accounts[accountPosition] = acc;
             setAccounts({accounts})
-    }
+    } */
 
 
 
